@@ -6,6 +6,7 @@ import CardDetails from "./CardDetailes";
 import AddCard from "./AddCard";
 import EditData from "./EditData";
 
+
 export default function Navbar() {
   const navigate = useNavigate();
   const [datas, setDatas] = useState([]);
@@ -60,19 +61,22 @@ export default function Navbar() {
 
   return (
     <section>
-      <nav>
+ 
+      <nav className="bg-black flex justify-center">
+      <h1 className="text-white m-2 p-2 font-black text-lg">R-AXIOS</h1>
         <ul className="flex justify-center">
+        
           <li>
-            <button onClick={() => navigate("/")} className="border m-2 p-2">
+            <button onClick={() => navigate("/")} className="text-white m-2 p-2">
               Home
             </button>
           </li>
           <li>
             <button
               onClick={() => navigate("/adduserdata")}
-              className="border m-2 p-2"
+              className="text-white m-2 p-2"
             >
-              Add User Data
+              Add User
             </button>
           </li>
         </ul>

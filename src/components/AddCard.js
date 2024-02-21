@@ -1,3 +1,6 @@
+import TextField from "@mui/material/TextField";
+
+
 export default function AddCard({ data, handlePost }) {
   const {
     setName,
@@ -20,124 +23,120 @@ export default function AddCard({ data, handlePost }) {
   };
 
   return (
-    <section>
-      <div className="grid grid-cols-3 mt-10 mx-20">
-        <input
-          type="text"
-          placeholder="Name"
-          id="name"
-          name="name"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Username"
-          id="username"
-          name="username"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Email"
-          id="email"
-          name="email"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Phone"
-          id="phone"
-          name="phone"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setPhone(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Website"
-          id="website"
-          name="website"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setWebsite(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Street"
-          id="street"
-          name="street"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setStreet(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Suite"
-          id="suite"
-          name="suite"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setSuite(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="City"
-          id="city"
-          name="city"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setCity(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Zipcode"
-          id="zipcode"
-          name="zipcode"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setZipcode(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Lat"
-          id="lat"
-          name="lat"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setLat(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Lng"
-          id="lng"
-          name="lng"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setLng(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Companyname"
-          id="companyname"
-          name="companyname"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setCompanyname(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="CatchPhrase"
-          id="catchPhrase"
-          name="catchPhrase"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setCatchPhrase(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Business"
-          id="bs"
-          name="bs"
-          className="border p-2 m-2 rounded-sm"
-          onChange={(e) => setBs(e.target.value)}
-        />
-        <button className="border m-2 p-2 rounded-md" onClick={handleSubmit}>
-          Submit
-        </button>
+    <section className="mt-5">
+    <p className="w-8/12 mx-auto px-4 font-bold text-lg py-2">User Info :</p>
+      <div className="w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2">
+       
+          <TextField
+            id="name"
+            label="Name"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <TextField
+            id="username"
+            label="Username"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <TextField
+            id="email"
+            label="Email"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            id="phone"
+            label="Phone"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <TextField
+            id="website"
+            label="Website"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setWebsite(e.target.value)}
+          />
+          </div>
+          <p className="w-8/12 mx-auto px-4 font-bold text-lg py-2">Address :</p>
+          <div className="w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2">
+          <TextField
+            id="street"
+            label="Street"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setStreet(e.target.value)}
+          />
+          <TextField
+            id="suite"
+            label="Suite"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setSuite(e.target.value)}
+          />
+          <TextField
+            id="city"
+            label="City"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setCity(e.target.value)}
+          />
+          <TextField
+            id="zipcode"
+            label="Zipcode"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setZipcode(e.target.value)}
+          />
+          <TextField
+            id="lat"
+            label="Lat"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setLat(e.target.value)}
+          />
+          <TextField
+            id="lng"
+            label="Lng"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setLng(e.target.value)}
+          />
+          </div>
+          <p className="w-8/12 mx-auto px-4 font-bold text-lg py-2">Company Detailes : </p>
+          <div className="w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2">
+          <TextField
+            id="companyname"
+            label="Companyname"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setCompanyname(e.target.value)}
+          />
+          <TextField
+            id="catchPhrase"
+            label="CatchPhrase"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setCatchPhrase(e.target.value)}
+          />
+          <TextField
+            id="bs"
+            label="Business"
+            variant="outlined"
+            style={{margin:'10px'}}
+            onChange={(e) => setBs(e.target.value)}
+          />
       </div>
+      <div className="flex justify-center">
+        <button className="border p-2 rounded-md m-5" onClick={handleSubmit}>
+            Submit
+          </button>
+          </div>
     </section>
   );
 }

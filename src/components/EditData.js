@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { API } from './api';
 import axios from 'axios';
-
+import { Box, TextField } from '@mui/material';
 
 export default function EditData() {
     const { userId } = useParams();
@@ -58,140 +58,134 @@ function EditUserForm({ datas }) {
     }
 
     return (
-<section>
+<section className="mt-5">
+  <p className="w-8/12 mx-auto px-4 font-bold text-lg py-2">User Info :</p>
+  <div className="w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2">
+    <TextField
+      id="name"
+      label="Name"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+    />
+    <TextField
+      id="username"
+      label="Username"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={username}
+      onChange={(e) => setUsername(e.target.value)}
+    />
+    <TextField
+      id="email"
+      label="Email"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+    />
+    <TextField
+      id="phone"
+      label="Phone"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={phone}
+      onChange={(e) => setPhone(e.target.value)}
+    />
+    <TextField
+      id="website"
+      label="Website"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={website}
+      onChange={(e) => setWebsite(e.target.value)}
+    />
+  </div>
+  <p className="w-8/12 mx-auto px-4 font-bold text-lg py-2">Address :</p>
+  <div className="w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2">
+    <TextField
+      id="street"
+      label="Street"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={street}
+      onChange={(e) => setStreet(e.target.value)}
+    />
+    <TextField
+      id="suite"
+      label="Suite"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={suite}
+      onChange={(e) => setSuite(e.target.value)}
+    />
+    <TextField
+      id="city"
+      label="City"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={city}
+      onChange={(e) => setCity(e.target.value)}
+    />
+    <TextField
+      id="zipcode"
+      label="Zipcode"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={zipcode}
+      onChange={(e) => setZipcode(e.target.value)}
+    />
+    <TextField
+      id="lat"
+      label="Lat"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={lat}
+      onChange={(e) => setLat(e.target.value)}
+    />
+    <TextField
+      id="lng"
+      label="Lng"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={lng}
+      onChange={(e) => setLng(e.target.value)}
+    />
+  </div>
+  <p className="w-8/12 mx-auto px-4 font-bold text-lg py-2">Company Detailes :</p>
+  <div className="w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2">
+    <TextField
+      id="companyname"
+      label="Companyname"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={companyname}
+      onChange={(e) => setCompanyname(e.target.value)}
+    />
+    <TextField
+      id="catchPhrase"
+      label="CatchPhrase"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={catchPhrase}
+      onChange={(e) => setCatchPhrase(e.target.value)}
+    />
+    <TextField
+      id="bs"
+      label="Business"
+      variant="outlined"
+      style={{ margin: '10px' }}
+      value={bs}
+      onChange={(e) => setBs(e.target.value)}
+    />
+  </div>
+  <div className="flex justify-center">
+    <button className="border p-2 rounded-md m-5" onClick={handleSave}>
+      Save
+    </button>
+  </div>
+</section>
 
-<div className="grid grid-cols-3 mt-10 mx-20">
-        <input
-          type="text"
-          placeholder="Name"
-          id="name"
-          name="name"
-          className="border p-2 m-2 rounded-sm"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Username"
-          id="username"
-          name="username"
-          className="border p-2 m-2 rounded-sm"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Email"
-          id="email"
-          name="email"
-          className="border p-2 m-2 rounded-sm"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Phone"
-          id="phone"
-          name="phone"
-          className="border p-2 m-2 rounded-sm"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Website"
-          id="website"
-          name="website"
-          className="border p-2 m-2 rounded-sm"
-          value={website}
-          onChange={(e) => setWebsite(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Street"
-          id="street"
-          name="street"
-          className="border p-2 m-2 rounded-sm"
-          value={street}
-          onChange={(e) => setStreet(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Suite"
-          id="suite"
-          name="suite"
-          className="border p-2 m-2 rounded-sm"
-          value={suite}
-          onChange={(e) => setSuite(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="City"
-          id="city"
-          name="city"
-          className="border p-2 m-2 rounded-sm"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Zipcode"
-          id="zipcode"
-          name="zipcode"
-          className="border p-2 m-2 rounded-sm"
-          value={zipcode}
-          onChange={(e) => setZipcode(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Lat"
-          id="lat"
-          name="lat"
-          className="border p-2 m-2 rounded-sm"
-          value={lat}
-          onChange={(e) => setLat(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Lng"
-          id="lng"
-          name="lng"
-          className="border p-2 m-2 rounded-sm"
-          value={lng}
-          onChange={(e) => setLng(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Companyname"
-          id="companyname"
-          name="companyname"
-          className="border p-2 m-2 rounded-sm"
-          value={companyname}
-          onChange={(e) => setCompanyname(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="CatchPhrase"
-          id="catchPhrase"
-          name="catchPhrase"
-          className="border p-2 m-2 rounded-sm"
-          value={catchPhrase}
-          onChange={(e) => setCatchPhrase(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Business"
-          id="bs"
-          name="bs"
-          className="border p-2 m-2 rounded-sm"
-          value={bs}
-          onChange={(e) => setBs(e.target.value)}
-        />
-        <button className="border m-2 p-2 rounded-md" onClick={handleSave}>
-          Save
-        </button>
-      </div>
-
-    </section>
       )
     }
