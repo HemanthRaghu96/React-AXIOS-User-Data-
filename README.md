@@ -6,7 +6,7 @@ The user data is stored in a mock API that can be accessed using Axios fetch.\
 I have used React JSX for design and functionality ,Tailwindcss and MUI for styling. \
 My UserData react app is responsive can use in small to large phone,tablet,laptop and desktop.
 
-Demo Live App:
+Demo Live App:https://r-axios.netlify.app/
 
 This project is open scorce, 🚀 Give a Star ⭐️ & Fork to this project ... Happy coding! 🤩
 
