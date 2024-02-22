@@ -2,31 +2,33 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { API } from './api';
 import axios from 'axios';
-import { Box, TextField } from '@mui/material';
+import {  TextField } from '@mui/material';
 
+// Component for editing user data
 export default function EditData() {
-    const { userId } = useParams();
-    const [datas, setDatas] = useState(null);
+    const { userId } = useParams(); // Getting userId from URL parameters
+    const [datas, setDatas] = useState(null); // State to store user data
    
     useEffect(()=>{
         const handleFetch = async () => {
             try {
-              const response = await axios.get(`${API}/${userId}`);
-               setDatas(response.data);
+              const response = await axios.get(`${API}/${userId}`); // Fetching user data based on userId
+               setDatas(response.data); // Setting fetched data to state
               
             } catch (error) {
               console.error("Error fetching data:", error);
             }
           };
-          handleFetch()
-    },[])
+          handleFetch(); // Fetching data when component mounts
+    },[userId]) // Triggering useEffect when userId changes
 
-   
-  return datas ? <EditUserForm datas={datas} /> : "Loading..."
-  
+    // If datas is available, render EditUserForm component with data, else show "Loading..."
+    return datas ? <EditUserForm datas={datas} /> : "Loading...";
 }
 
+// Component for the form to edit user data
 function EditUserForm({ datas }) {
+    // State variables to store form data
     const [name, setName] = useState(datas.name);
     const [username, setUsername] = useState(datas.username);
     const [email, setEmail] = useState(datas.email);
@@ -41,8 +43,11 @@ function EditUserForm({ datas }) {
     const [bs, setBs] = useState(datas.company.bs);
     const [lat, setLat] = useState(datas.address.geo.lat);
     const [lng, setLng] = useState(datas.address.geo.lng);
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // Hook for navigation
+
+    // Function to handle saving edited data
     const handleSave=async()=>{
+        // Creating updated data object
         const updatedData = {
             name,
             username,
@@ -52,15 +57,23 @@ function EditUserForm({ datas }) {
             address: { street, suite, city, zipcode,geo: { lat, lng } },
             company: { name: companyname, catchPhrase, bs },
         };
-        await axios.put(`${API}/${datas.id}`,updatedData)
-        await navigate("/");
-        
+        // Sending PUT request to update user data
+        await axios.put(`${API}/${datas.id}`,updatedData);
+        await navigate("/"); // Navigating back to home page after saving changes
     }
 
+    // Function to handle cancelling editing
+    const handleCancel=()=>{
+      navigate("/"); // Navigating back to home page
+    }
+
+    // JSX for the edit form
     return (
 <section className="mt-5">
-  <p className="w-8/12 mx-auto px-4 font-bold text-lg py-2">User Info :</p>
-  <div className="w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2">
+  {/* User Info section */}
+  <p className="w-8/12 mx-auto px-4 font-bold text-lg py-2 font-poppins">User Info :</p>
+  <div className="w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2 font-poppins">
+    {/* Text fields for user info */}
     <TextField
       id="name"
       label="Name"
@@ -102,8 +115,10 @@ function EditUserForm({ datas }) {
       onChange={(e) => setWebsite(e.target.value)}
     />
   </div>
-  <p className="w-8/12 mx-auto px-4 font-bold text-lg py-2">Address :</p>
+  {/* Address section */}
+  <p className="w-8/12 mx-auto px-4 font-bold text-lg py-2 font-poppins">Address :</p>
   <div className="w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2">
+    {/* Text fields for address */}
     <TextField
       id="street"
       label="Street"
@@ -153,8 +168,10 @@ function EditUserForm({ datas }) {
       onChange={(e) => setLng(e.target.value)}
     />
   </div>
-  <p className="w-8/12 mx-auto px-4 font-bold text-lg py-2">Company Detailes :</p>
+  {/* Company Details section */}
+  <p className="w-8/12 mx-auto px-4 font-bold text-lg py-2 font-poppins">Company Details :</p>
   <div className="w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2">
+    {/* Text fields for company details */}
     <TextField
       id="companyname"
       label="Companyname"
@@ -180,12 +197,15 @@ function EditUserForm({ datas }) {
       onChange={(e) => setBs(e.target.value)}
     />
   </div>
+  {/* Buttons for saving and cancelling */}
   <div className="flex justify-center">
-    <button className="border p-2 rounded-md m-5" onClick={handleSave}>
+    <button className="border p-2 rounded-md m-3 font-poppins text-green-500" onClick={handleSave}>
       Save
+    </button>
+    <button className="border p-2 rounded-md m-3 font-poppins text-red-500" onClick={handleCancel}>
+      Cancel
     </button>
   </div>
 </section>
-
       )
     }

@@ -1,3 +1,15 @@
+# React AXIOS UserData
+I created user data with API.\
+I displayed all the existing API data in UI using Axios.\
+I made User to perform CRUD operations on user data, including adding, editing, and deleting user records.\
+The user data is stored in a mock API that can be accessed using Axios fetch.\
+I have used React JSX for design and functionality ,Tailwindcss and MUI for styling. \
+My UserData react app is responsive can use in small to large phone,tablet,laptop and desktop.
+
+Demo Live App:
+
+This project is open scorce, 🚀 Give a Star ⭐️ & Fork to this project ... Happy coding! 🤩
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

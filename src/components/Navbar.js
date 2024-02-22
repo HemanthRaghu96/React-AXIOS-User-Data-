@@ -1,15 +1,16 @@
 import axios from "axios";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { API } from "./api";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import CardDetails from "./CardDetailes";
 import AddCard from "./AddCard";
 import EditData from "./EditData";
 
-
+// Component for the navigation bar and routing
 export default function Navbar() {
-  const navigate = useNavigate();
-  const [datas, setDatas] = useState([]);
+  const navigate = useNavigate(); // Hook for navigation
+  const [datas, setDatas] = useState([]); // State to store user data
+  // State variables to store form data
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -24,7 +25,8 @@ export default function Navbar() {
   const [bs, setBs] = useState("");
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
-  
+
+  // Function to fetch user data
   const handleFetch = async () => {
     try {
       const response = await axios.get(`${API}`);
@@ -34,6 +36,7 @@ export default function Navbar() {
     }
   };
 
+  // Function to add new user data
   const handlePost = async () => {
     const newData = {
       name,
@@ -44,37 +47,36 @@ export default function Navbar() {
       address: { street, suite, city, zipcode,geo: { lat, lng } },
       company: { name: companyname, catchPhrase, bs },
     };
-    await axios.post(`${API}`, newData);
-    await setDatas([...datas, newData]);
-    await navigate("/");
+    await axios.post(`${API}`, newData); // Sending POST request to add data
+    await setDatas([...datas, newData]); // Updating state with new data
+    await navigate("/"); // Navigating back to home page
   };
 
+  // Function to delete user data
   const handleDelete=async(id)=>{
-    console.log(id)
-    await axios.delete(`${API}/${id}`);
-    const postDeleteData=datas.filter(data=>(data.id !==id))
-    setDatas(postDeleteData)
-    
+    await axios.delete(`${API}/${id}`); // Sending DELETE request to delete data
+    const postDeleteData=datas.filter(data=>(data.id !==id)); // Filtering out deleted data from state
+    setDatas(postDeleteData); // Updating state with filtered data
   }
 
- 
-
+  // JSX for the navigation bar and routes
   return (
     <section>
- 
+      {/* Navigation bar */}
       <nav className="bg-black flex justify-center">
-      <h1 className="text-white m-2 p-2 font-black text-lg">R-AXIOS</h1>
+        <h1 className="text-white m-2 p-2 font-black text-lg font-poppins">R-AXIOS</h1>
         <ul className="flex justify-center">
-        
+          {/* Home button */}
           <li>
-            <button onClick={() => navigate("/")} className="text-white m-2 p-2">
+            <button onClick={() => navigate("/")} className="text-white m-2 p-2 font-poppins">
               Home
             </button>
           </li>
+          {/* Add User button */}
           <li>
             <button
               onClick={() => navigate("/adduserdata")}
-              className="text-white m-2 p-2"
+              className="text-white m-2 p-2 font-poppins"
             >
               Add User
             </button>
@@ -82,16 +84,19 @@ export default function Navbar() {
         </ul>
       </nav>
 
+      {/* Routes for different pages */}
       <Routes>
+        {/* Route for home page displaying user details */}
         <Route
           path="/"
           element={<CardDetails datas={datas} handleFetch={handleFetch} handleDelete={handleDelete}/>}
         />
+        {/* Route for adding new user data */}
         <Route
           path="/adduserdata"
           element={
             <AddCard
-            handlePost={handlePost}
+              handlePost={handlePost}
               data={{
                 setName,
                 setUsername,
@@ -111,6 +116,7 @@ export default function Navbar() {
             />
           }
         />
+        {/* Route for editing user data */}
         <Route
           path="/editUserData/:userId"
           element={<EditData />} />
